@@ -1,14 +1,16 @@
 use exceptions::{catch, throw};
 
-fn rerror() {}
+fn rerror() {
+    throw(String::from("test"));
+}
 
 fn main() {
     let x = catch!({
         rerror();
         0
-    } except e: &str {
+    } except e: String {
         eprintln!("caught error: {}", e);
-        10
+        20
     });
     dbg!(x);
 }
